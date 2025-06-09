@@ -23,10 +23,10 @@ const ProjectStats: React.FC<ProjectStatsProps> = ({ selectedProject, allProject
     const projects = selectedProject ? [selectedProject] : (allProjects || []);
     // Calculate stats for the selected project or all projects
     const totalProjects = projects.length;
-    const completedProjects = projects.filter((project: any) => project.completed).length;
+    // Consider a project    const completedProjects = projects.filter((project: any) => project.completed).length;
     const totalTasks = projects.reduce((acc: number, project: any) => acc + (project.tasks?.length || 0), 0);
     const completedTasks = projects.reduce((acc: number, project: any) => acc + (project.tasks?.filter((task: any) => task.completed).length || 0), 0);
-    const completionRate = totalProjects > 0 ? (completedProjects / totalProjects) * 100 : 0;
+rojects > 0 ? (completedProjects / totalProjects) * 100 : 0;
 
     // Priority statistics
     const priorityStats: Record<string, number> = {};
