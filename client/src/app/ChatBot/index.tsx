@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Loader2, MessageCircle, X, AlertCircle } from 'lucide-react';
-const { generateChatResponse } = await import('@/lib/chatUtils');
+import { generateChatResponse } from '../../lib/chatUtils';
 
 interface Message {
   role: 'user' | 'assistant' | 'error';
