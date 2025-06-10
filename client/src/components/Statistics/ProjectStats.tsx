@@ -23,10 +23,12 @@ const ProjectStats: React.FC<ProjectStatsProps> = ({ selectedProject, allProject
     const projects = selectedProject ? [selectedProject] : (allProjects || []);
     // Calculate stats for the selected project or all projects
     const totalProjects = projects.length;
-    // Consider a project    const completedProjects = projects.filter((project: any) => project.completed).length;
+    // Consider a project completed if it has endDate or completed true
+    const completedProjects = projects.filter((project: any) => project.completed || project.endDate).length;
     const totalTasks = projects.reduce((acc: number, project: any) => acc + (project.tasks?.length || 0), 0);
-    const completedTasks = projects.reduce((acc: number, project: any) => acc + (project.tasks?.filter((task: any) => task.completed).length || 0), 0);
-rojects > 0 ? (completedProjects / totalProjects) * 100 : 0;
+    // Consider a task completed if status is 'Completed' or completed true
+    const completedTasks = projects.reduce((acc: number, project: any) => acc + ((project.tasks?.filter((task: any) => task.completed || task.status === 'Completed').length) || 0), 0);
+    const completionRate = totalProjects > 0 ? (completedProjects / totalProjects) * 100 : 0;
 
     // Priority statistics
     const priorityStats: Record<string, number> = {};
@@ -86,7 +88,6 @@ rojects > 0 ? (completedProjects / totalProjects) * 100 : 0;
                     <li><span className="font-semibold">Completed Projects:</span> {completedProjects}</li>
                     <li><span className="font-semibold">Total Tasks:</span> {totalTasks}</li>
                     <li><span className="font-semibold">Completed Tasks:</span> {completedTasks}</li>
-                    <li><span className="font-semibold">Completion Rate:</span> {completionRate.toFixed(2)}%</li>
                 </ul>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
