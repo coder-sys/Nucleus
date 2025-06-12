@@ -104,7 +104,7 @@ const Sidebar = () => {
         <div className="sticky top-0 z-50 flex min-h-[64px] w-full items-center justify-between bg-white/90 px-4 py-3 dark:bg-black/90 backdrop-blur border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2">
             <Image
-              src="/logo.png"
+              src="https://pm--s3--images.s3.us-east-1.amazonaws.com/Untitled+design.jpg"
               alt="Logo"
               width={36}
               height={36}
